@@ -2,6 +2,7 @@ package com.example.android.unscramble.ui.game
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.android.unscramble.R
 
 class GameViewModel: ViewModel() {
 
@@ -55,6 +56,18 @@ class GameViewModel: ViewModel() {
             getNextWord()
             true
         } else false
+    }
+
+    private fun increaseScore() {
+        _score += SCORE_INCREASE
+    }
+
+    fun isUserWordCorrect(playerWord: String): Boolean {
+        if (playerWord.equals(currentWord, true)) {
+            increaseScore()
+            return true
+        }
+        return false
     }
 
     override fun onCleared() {
