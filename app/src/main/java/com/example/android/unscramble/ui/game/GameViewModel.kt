@@ -10,7 +10,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.android.unscramble.R
 
-class GameViewModel: ViewModel() {
+class GameViewModel : ViewModel() {
 
     private var _score = MutableLiveData<Int>(0)
     val score: LiveData<Int>
@@ -35,11 +35,10 @@ class GameViewModel: ViewModel() {
             )
             spannable
         }
-    }}
+    }
 
     private var wordsList: MutableList<String> = mutableListOf() // lista de palavras já jogadas
     private lateinit var currentWord: String
-
 
 
     init {
@@ -55,9 +54,9 @@ class GameViewModel: ViewModel() {
         tempWord.shuffle()
 
         // checa se a palavra embaralhada não é igual à palavra original
-        while(String(tempWord).equals(currentWord, false)) {
-                tempWord.shuffle()
-            }
+        while (String(tempWord).equals(currentWord, false)) {
+            tempWord.shuffle()
+        }
 
         // checa se a palavra escolhida está na lista de palavras já jogadas
         // altera palavra mostrada e adiciona ao numero de palavras jogadas
@@ -94,11 +93,6 @@ class GameViewModel: ViewModel() {
         _currentWordCount.value = 0
         wordsList.clear()
         getNextWord()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.d("GameFragment", "GameViewModel destroyed!")
     }
 
 
